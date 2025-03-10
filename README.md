@@ -1,5 +1,7 @@
 # XmlMessageDoc
 
+An incomplete list of packet messages used to communicate with the online servers in U.B. Funkeys
+
 ### Client to Server (C2S)
 
 | Actionscript Name | XML Tag | Description | Plugin | Server Response |
