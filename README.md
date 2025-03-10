@@ -45,7 +45,7 @@
 | sendChangeProperties | [cp](#cp) | N/A | Chat | N/A |
 | sendChangingPasswordRquest | [u_acp](#u_acp) | N/A | User | N/A |
 | sendCharacterChosen | [cc](#cc) | N/A | Soccer | N/A |
-| sendChatMsg | [ms](#ms) | N/A | Multiplayer`\nChat`{=tex} | N/A |
+| sendChatMsg | [ms](#ms) | N/A | Multiplayer, Chat | N/A |
 | sendCleaningsRequest | [gcl](#gcl) | N/A | Trunk | N/A |
 | sendCreateRoom | [cr](#cr) | N/A | Chat | N/A |
 | sendDeleteBuddy | [u_dbd](#u_dbd) | N/A | User | N/A |
@@ -68,7 +68,7 @@
 | sendInvitationResponse | [u_inr](#u_inr) | N/A | User | N/A |
 | sendItemsRequest | [gil](#gil) | N/A | Trunk | N/A |
 | sendJammersRequest | [gjl](#gjl) | N/A | Trunk | N/A |
-| sendJoin (Multiplayer)`\nsendJoinRoom `{=tex}(Chat)`\nSEND`{=tex}\_JoinGame (Fight)`\nSEND`{=tex}\_JoinGameRTT (Fight) | [jn](#jn) | N/A | Multiplayer`\nChat`{=tex}`\nFight`{=tex} | N/A |
+| sendJoin (Multiplayer), sendJoinRoom (Chat), SEND_JoinGame (Fight), SEND_JoinGameRTT (Fight) | [jn](#jn) | N/A | Multiplayer, Chat, Fight | N/A |
 | sendKickOutFromCrib | [ko](#ko) | N/A | Chat | N/A |
 | sendLeaveGame | [lv](#lv) | N/A | Multiplayer | N/A |
 | sendLoadProfileRequest | [lp](#lp) | N/A | Galaxy | N/A |
@@ -87,7 +87,7 @@
 | sendRoomsRequest | [grl](#grl) | N/A | Trunk | N/A |
 | sendSaveProfilePartRequest | [spp](#spp) | N/A | Galaxy | N/A |
 | sendSaveProfileRequest | [u_sup](#u_sup) | N/A | User | N/A |
-| sendSaveProfileRequest (Galaxy)`\nsendStrikeParameter `{=tex}(Soccer) | [sp](#sp) | N/A | Galaxy`\nSoccer`{=tex} | N/A |
+| sendSaveProfileRequest (Galaxy), sendStrikeParameter (Soccer) | [sp](#sp) | N/A | Galaxy, Soccer | N/A |
 | sendSecureQuestionRquest | [u_gsq](#u_gsq) | N/A | User | N/A |
 | sendServiceDetailsRequest | [a_gsd](#a_gsd) | N/A | Core | N/A |
 | sendServiceListRequest | [a_gsl](#a_gsl) | N/A | Core | N/A |
@@ -122,7 +122,7 @@
 | ??? | [u_gcl](#u_gcl) | N/A | User | N/A |
 | ??? | [u_gcb](#u_gcb) | N/A | User | N/A |
 | ??? | [u_afp](#u_afp) | N/A | User | N/A |
-| gameOver (Multiplayer) | [go](#go) | N/A | Multiplayer`\nFight`{=tex} | N/A |
+| gameOver (Multiplayer) | [go](#go) | N/A | Multiplayer, Fight | N/A |
 | loadFiles | [fp](#fp) | N/A | Multiplayer | N/A |
 | MSGHND_ActionAllowance | [rpd](#rpd) | N/A | Fight | N/A |
 | MSGHND_ActionAllowance | [rpa](#rpa) | N/A | Fight | N/A |
@@ -154,7 +154,7 @@
 | onGetPluginDetailes | [a_gpd](#a_gpd) | N/A | Core | N/A |
 | onGetServiceDetailes | [a_gsd](#a_gsd) | N/A | Core | N/A |
 | onGetServiceList | [a_gsl](#a_gsl) | N/A | Core | N/A |
-| onJoin`\nMSGHND`{=tex}\_Join (Fight) | [jn](#jn) | N/A | Multiplayer`\nChat`{=tex}`\nFight`{=tex} | N/A |
+| onJoin, MSGHND_Join (Fight) | [jn](#jn) | N/A | Multiplayer, Chat, Fight | N/A |
 | onProfileUpdate | [u_sup](#u_sup) | N/A | User | N/A |
 | onReceiveAddBuddy | [u_abd](#u_abd) | N/A | User | N/A |
 | onReceiveAddBuddyRequest | [u_abr](#u_abr) | N/A | User | N/A |
@@ -185,7 +185,7 @@
 | onReceiveLoadProfile | [profile](#profile) | N/A | Galaxy | N/A |
 | onReceiveLootBalance | [glb](#glb) | N/A | Trunk | N/A |
 | onReceiveMoodsList | [gml](#gml) | N/A | Trunk | N/A |
-| onReceiveMsg | [ms](#ms) | N/A | Multiplayer`\nChat`{=tex} | N/A |
+| onReceiveMsg | [ms](#ms) | N/A | Multiplayer, Chat | N/A |
 | onReceiveOnlineStatusBuddy | [u_cos](#u_cos) | N/A | User | N/A |
 | onReceivePlayerConnected | [on](#on) | N/A | Chat | N/A |
 | onReceivePlayerDisconnected | [of](#of) | N/A | Chat | N/A |
@@ -197,7 +197,7 @@
 | onReceiveProfileVersion | [lpv](#lpv) | N/A | Galaxy | N/A |
 | onReceiveResults | [rr](#rr) | N/A | Galaxy | N/A |
 | onReceiveRoomsList | [grl](#grl) | N/A | Trunk | N/A |
-| onReceiveSaveProfile (Galaxy)`\nSetPartnerHit `{=tex}(Pool) | [sp](#sp) | N/A | Galaxy`\nPool`{=tex} | N/A |
+| onReceiveSaveProfile (Galaxy), SetPartnerHit (Pool) | [sp](#sp) | N/A | Galaxy, Pool | N/A |
 | onReceiveSpecialEvent | [se](#se) | N/A | Chat | N/A |
 | onReceiveSplashList | [gsl](#gsl) | N/A | Trunk | N/A |
 | onReceiveStatisticVersion | [vsu](#vsu) | N/A | Galaxy | N/A |
@@ -215,12 +215,12 @@
 | preRollUpdate | [cs](#cs) | N/A | Pool | N/A |
 | receiveMovement | [mv](#mv) | N/A | Chinese Checkers | N/A |
 | serverMoving | [cm](#cm) | N/A | Soccer | N/A |
-| serverPlayAgain (Soccer) | [pa](#pa) | Play again | Soccer`\nMahjongg`{=tex}`\nBoxing`{=tex}`\nPool`{=tex}`\nChinese `{=tex}Checkers | N/A |
-| serverSaidChangeScore (Opponent) (Soccer)`\nsetPlayersScore `{=tex}(Opponent) (Pool) | [os](#os) | N/A | Soccer`\nBoxing`{=tex} | N/A |
-| serverSaidChangeScore (Player) (Soccer)`\nsetPlayersScore `{=tex}(Player) (Pool) | [ps](#ps) | N/A | Soccer`\nBoxing`{=tex}`\nPool`{=tex} | N/A |
+| serverPlayAgain (Soccer) | [pa](#pa) | Play again | Soccer, Mahjongg, Boxing, Pool, Chinese Checkers | N/A |
+| serverSaidChangeScore (Opponent) (Soccer), setPlayersScore (Opponent) (Pool) | [os](#os) | N/A | Soccer, Boxing | N/A |
+| serverSaidChangeScore (Player) (Soccer), setPlayersScore (Player) (Pool) | [ps](#ps) | N/A | Soccer, Boxing, Pool | N/A |
 | setChosenPocket | [pc](#pc) | N/A | Pool | N/A |
 | setPingTimeout | [u_p](#u_p) | N/A | User | N/A |
-| setPingTimeout | [p](#p) | N/A | Galaxy`\nChat`{=tex} | N/A |
-| setStepRight (Pool)`\nreceiveTurnNotification `{=tex}(Chinese Checkers) | [nt](#nt) | N/A | Pool`\nChinese `{=tex}Checkers | N/A |
+| setPingTimeout | [p](#p) | N/A | Galaxy, Chat | N/A |
+| setStepRight (Pool), receiveTurnNotification (Chinese Checkers) | [nt](#nt) | N/A | Pool, Chinese Checkers | N/A |
 | startGame | [sg](#sg) | N/A | Multiplayer | N/A |
-| startNewRound (Soccer)`\nnewMPRound `{=tex}(Boxing) | [nr](#nr) | N/A | Soccer`\nBoxing`{=tex} |  |
+| startNewRound (Soccer), newMPRound (Boxing) | [nr](#nr) | N/A | Soccer, Boxing | N/A |
