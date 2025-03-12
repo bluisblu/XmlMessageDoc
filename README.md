@@ -6,14 +6,14 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Client to Server (C2S)
 
-|Actionscript Name|XML Tag|Description|Plugin|Server Response|
-|---|---|---|---|---|
-|sendLoginUserRequest|[a_lru](Core Plugin.md#a_lru)|N/A|Core|N/A|
-|sendServiceListRequest|[a_gsl](Core Plugin.md#a_gsl)|N/A|Core|N/A|
-|sendPluginDetailsRequest|[a_gpd](Core Plugin.md#a_gpd)|N/A|Core|N/A|
-|sendLoginGuestRequest|[a_lgu](Core Plugin.md#a_lgu)|N/A|Core|N/A|
-|sendFileListRequest|[a_gfl](Core Plugin.md#a_gfl)|N/A|Core|N/A|
-|sendServiceDetailsRequest|[a_gsd](Core Plugin.md#a_gsd)|N/A|Core|N/A|
+| Actionscript Name         | XML Tag                       | Description | Plugin | Server Response |
+| ------------------------- | ----------------------------- | ----------- | ------ | --------------- |
+| sendLoginUserRequest      | [a_lru](Core Plugin.md#a_lru) | N/A         | Core   | N/A             |
+| sendServiceListRequest    | [a_gsl](Core Plugin.md#a_gsl) | N/A         | Core   | N/A             |
+| sendPluginDetailsRequest  | [a_gpd](Core Plugin.md#a_gpd) | N/A         | Core   | N/A             |
+| sendLoginGuestRequest     | [a_lgu](Core Plugin.md#a_lgu) | N/A         | Core   | N/A             |
+| sendFileListRequest       | [a_gfl](Core Plugin.md#a_gfl) | N/A         | Core   | N/A             |
+| sendServiceDetailsRequest | [a_gsd](Core Plugin.md#a_gsd) | N/A         | Core   | N/A             |
 
 ### Server to Client (S2C)
 
