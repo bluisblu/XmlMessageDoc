@@ -6,27 +6,27 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Client to Server (C2S)
 
-| Actionscript Name         | XML Tag                       | Description | Server Response |
-| ------------------------- | ----------------------------- | ----------- | --------------- |
-| sendFileListRequest       | [a_gfl](Core-Plugin.md#a_gfl) | N/A         | N/A             |
-| sendPluginDetailsRequest  | [a_gpd](Core-Plugin.md#a_gpd) | N/A         | N/A             |
-| sendServiceDetailsRequest | [a_gsd](Core-Plugin.md#a_gsd) | N/A         | N/A             |
-| sendServiceListRequest    | [a_gsl](Core-Plugin.md#a_gsl) | N/A         | N/A             |
-| sendLoginGuestRequest     | [a_lgu](Core-Plugin.md#a_lgu) | N/A         | N/A             |
-| sendLoginUserRequest      | [a_lru](Core-Plugin.md#a_lru) | N/A         | N/A             |
+| Actionscript Name         | XML Tag                       | Description                                            | Server Response |
+| ------------------------- | ----------------------------- | ------------------------------------------------------ | --------------- |
+| sendFileListRequest       | [a_gfl](Core-Plugin.md#a_gfl) | `c` - client id                                        | N/A             |
+| sendPluginDetailsRequest  | [a_gpd](Core-Plugin.md#a_gpd) | `p` - plugin id                                        | N/A             |
+| sendServiceDetailsRequest | [a_gsd](Core-Plugin.md#a_gsd) | `s` - service id                                       | N/A             |
+| sendServiceListRequest    | [a_gsl](Core-Plugin.md#a_gsl) |                                                        | N/A             |
+| sendLoginGuestRequest     | [a_lgu](Core-Plugin.md#a_lgu) | `c` - client id<br>`a` - affiliate id<br>`d` - ad id   | N/A             |
+| sendLoginUserRequest      | [a_lru](Core-Plugin.md#a_lru) | `n` - username<br>`p` - password<br>`l` - constant `1` | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name    | XML Tag                       | Description | Client Response |
-| -------------------- | ----------------------------- | ----------- | --------------- |
-| onAnotherLogin       | [a_alo](Core-Plugin.md#a_alo) | N/A         | N/A             |
-| onFileListRecieve    | [a_gfl](Core-Plugin.md#a_gfl) | N/A         | N/A             |
-| onGetPluginDetailes  | [a_gpd](Core-Plugin.md#a_gpd) | N/A         | N/A             |
-| onGetServiceDetailes | [a_gsd](Core-Plugin.md#a_gsd) | N/A         | N/A             |
-| onGetServiceList     | [a_gsl](Core-Plugin.md#a_gsl) | N/A         | N/A             |
-| onUserLogin          | [a_lgu](Core-Plugin.md#a_lgu) | N/A         | N/A             |
-| onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | N/A         | N/A             |
-| setPingTimeout       | [p](Core-Plugin.md#p)         | `t` - time  | N/A             |
+| Actionscript Name    | XML Tag                       | Description                                                                                                                           | Client Response |
+| -------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| onAnotherLogin       | [a_alo](Core-Plugin.md#a_alo) | Opens popup `web_another_login`                                                                                                       | N/A             |
+| onFileListRecieve    | [a_gfl](Core-Plugin.md#a_gfl) | `url` - URL<br>`n` - file name<br>`p` - plugin id<br>`t` - type module<br>`d` - display immediately<br>`o` - popup<br>`c` - closeable | N/A             |
+| onGetPluginDetailes  | [a_gpd](Core-Plugin.md#a_gpd) | `xi` - ip<br>`xp` - port<br>`bi` - backup ip<br>`bp` - backup port<br>`s` - service id<br>`p` - plugin id                             | N/A             |
+| onGetServiceDetailes | [a_gsd](Core-Plugin.md#a_gsd) | `xi` - ip<br>`xp` - port<br>`bi` - backup ip<br>`bp` - backup port<br>`s` - service id                                                | N/A             |
+| onGetServiceList     | [a_gsl](Core-Plugin.md#a_gsl) | `xi` - ip<br>`xp` - port<br>`bi` - backup ip<br>`bp` - backup port<br>`id` - service id                                               | N/A             |
+| onUserLogin          | [a_lgu](Core-Plugin.md#a_lgu) | `u` - user id<br>`n` - username<br>`p` - password<br>`s` - service id                                                                 | N/A             |
+| onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | `r` - result (0 = success)<br>`u` - user id<br>`s` - service id                                                                       | N/A             |
+| setPingTimeout       | [p](Core-Plugin.md#p)         | `t` - time                                                                                                                            | N/A             |
 
 ## 1 - User
 
