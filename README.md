@@ -7,6 +7,22 @@ An incomplete list of packet messages used to communicate with the online server
  - By default unless stated that there are child nodes, assume inline xml with a space before the file `/>`, like for example `<a_gpd p="2" />`
  - When playing multiplayer minigames, using chat, or even the galaxy service, the client will append a routing number like for example `1|2|2|0#`, which is the service number, two instances of the plugin number, and then the board/room number. When responding, it is necessary to wrap the response in `<h2_0>{message here}</h2_0>`
 
+## Plugins
+
+ 0. [Core](#0 - Core)
+ 1. [User](#1 - User)
+ 2. [Chat](#2 - Chat)
+ 3. [Boxing](#3 - Boxing)
+ 4. [Mahjongg](#4 - Mahjongg)
+ 5. [Soccer](#5 - Soccer)
+ 6. [Pool](#6 - Pool)
+ 7. [Galaxy](#7 - Galaxy)
+ 8. [Fight](#8 - Fight)
+ 9. [Chinese Checkers](#9 - Chinese Checkers)
+ 10. [Trunk](#10 - Trunk)
+ 11. [Worms](#11 - Worms)
+ 12. [Dominos](#12 - Dominos)
+
 ## 0 - Core
 
 ### Client to Server (C2S)
