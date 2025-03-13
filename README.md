@@ -1,6 +1,6 @@
 # XmlMessageDoc
 
-An incomplete list of packet messages used to communicate with the online servers in U.B. Funkeys
+An incomplete list of packet messages used to communicate with the online servers in U.B. Funkeys. Submit an issue or message me on the community discord if any of this information is incorrect in practice.
 
 ## 0 - Core
 
@@ -25,72 +25,71 @@ An incomplete list of packet messages used to communicate with the online server
 | onGetServiceDetailes | [a_gsd](Core-Plugin.md#a_gsd) | `xi` - ip<br>`xp` - port<br>`bi` - backup ip<br>`bp` - backup port<br>`s` - service id                                                | N/A             |
 | onGetServiceList     | [a_gsl](Core-Plugin.md#a_gsl) | `xi` - ip<br>`xp` - port<br>`bi` - backup ip<br>`bp` - backup port<br>`id` - service id                                               | N/A             |
 | onUserLogin          | [a_lgu](Core-Plugin.md#a_lgu) | `u` - user id<br>`n` - username<br>`p` - password<br>`s` - service id                                                                 | N/A             |
-| onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | `r` - result (0 = success)<br>`u` - user id<br>`s` - service id                                                                       | N/A             |
+| onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | `r` - result ("0" = success)<br>`u` - user id<br>`s` - service id                                                                     | N/A             |
 | setPingTimeout       | [p](Core-Plugin.md#p)         | `t` - time                                                                                                                            | N/A             |
 
 ## 1 - User
 
 ### Client to Server (C2S)
 
-| Actionscript Name           | XML Tag                       | Description | Server Response |
-| --------------------------- | ----------------------------- | ----------- | --------------- |
-| sendAddBuddy                | [u_abd](User-Plugin.md#u_abd) | N/A         | N/A             |
-| sendAddBuddyResponse        | [u_abr](User-Plugin.md#u_abr) | N/A         | N/A             |
-| sendChangingPasswordRquest  | [u_acp](User-Plugin.md#u_acp) | N/A         | N/A             |
-| sendForgottenPasswordRquest | [u_afp](User-Plugin.md#u_afp) | N/A         | N/A             |
-| sendChangeChatStatus        | [u_ccs](User-Plugin.md#u_ccs) | N/A         | N/A             |
-| sendChangePhoneStatus       | [u_cph](User-Plugin.md#u_cph) | N/A         | N/A             |
-| sendDeleteBuddy             | [u_dbd](User-Plugin.md#u_dbd) | N/A         | N/A             |
-| sendDeleteBuddyResponse     | [u_dbr](User-Plugin.md#u_dbr) | N/A         | N/A             |
-| sendChangeFlagRequest       | [u_fbd](User-Plugin.md#u_fbd) | N/A         | N/A             |
-| sendBuddyListRequest        | [u_gbl](User-Plugin.md#u_gbl) | N/A         | N/A             |
-| sendGetBalance              | [u_gcb](User-Plugin.md#u_gcb) | N/A         | N/A             |
-| sendGetCurrencyList         | [u_gcl](User-Plugin.md#u_gcl) | N/A         | N/A             |
-| sendGetFileList             | [u_gfl](User-Plugin.md#u_gfl) | N/A         | N/A             |
-| sendGetShortProfileRquest   | [u_gsp](User-Plugin.md#u_gsp) | N/A         | N/A             |
-| sendSecureQuestionRquest    | [u_gsq](User-Plugin.md#u_gsq) | N/A         | N/A             |
-| sendGetUSAStatesList        | [u_gul](User-Plugin.md#u_gul) | N/A         | N/A             |
-| sendGetFullProfileRquest    | [u_gup](User-Plugin.md#u_gup) | N/A         | N/A             |
-| sendGetUserStatsRquest      | [u_gus](User-Plugin.md#u_gus) | N/A         | N/A             |
-| sendGetCountryList          | [u_gwl](User-Plugin.md#u_gwl) | N/A         | N/A             |
-| sendInvitationResponse      | [u_inr](User-Plugin.md#u_inr) | N/A         | N/A             |
-| sendInvitation              | [u_inv](User-Plugin.md#u_inv) | N/A         | N/A             |
-| sendRegisterUserRequest     | [u_reg](User-Plugin.md#u_reg) | N/A         | N/A             |
-| sendPrivateMsg              | [u_spm](User-Plugin.md#u_spm) | N/A         | N/A             |
-| sendSaveProfileRequest      | [u_sup](User-Plugin.md#u_sup) | N/A         | N/A             |
+| Actionscript Name           | XML Tag                       | Description                                                                                                                                                               | Server Response |
+| --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| sendAddBuddy                | [u_abd](User-Plugin.md#u_abd) | `b` - buddy id `if arg typeof number`<br>`n` - the value `else if arg typeof not string`                                                                                  | N/A             |
+| sendAddBuddyResponse        | [u_abr](User-Plugin.md#u_abr) | `b` - buddy id `if arg typeof number`<br>`n` - the value `else if arg typeof not string`<br>`r` - answer<br>`a` - reason, if any                                          | N/A             |
+| sendChangingPasswordRquest  | [u_acp](User-Plugin.md#u_acp) | `l` - username<br>`p` - new password<br>`o` - old password                                                                                                                | N/A             |
+| sendForgottenPasswordRquest | [u_afp](User-Plugin.md#u_afp) | `l` - username                                                                                                                                                            | N/A             |
+| sendChangeChatStatus        | [u_ccs](User-Plugin.md#u_ccs) | `s` - status                                                                                                                                                              | N/A             |
+| sendChangePhoneStatus       | [u_cph](User-Plugin.md#u_cph) | `ph` - status                                                                                                                                                             | N/A             |
+| sendDeleteBuddy             | [u_dbd](User-Plugin.md#u_dbd) | `b` - buddy id                                                                                                                                                            | N/A             |
+| sendDeleteBuddyResponse     | [u_dbr](User-Plugin.md#u_dbr) | `b` - buddy id<br>`n` - name<br>`r` - answer result number                                                                                                                | N/A             |
+| sendChangeFlagRequest       | [u_fbd](User-Plugin.md#u_fbd) | `b` - buddy id<br>`bf` - <br>`cf` -                                                                                                                                       | N/A             |
+| sendBuddyListRequest        | [u_gbl](User-Plugin.md#u_gbl) | No attributes                                                                                                                                                             | N/A             |
+| sendGetBalance              | [u_gcb](User-Plugin.md#u_gcb) | No attributes                                                                                                                                                             | N/A             |
+| sendGetCurrencyList         | [u_gcl](User-Plugin.md#u_gcl) | No attributes                                                                                                                                                             | N/A             |
+| sendGetFileList             | [u_gfl](User-Plugin.md#u_gfl) | `c` - client id                                                                                                                                                           | N/A             |
+| sendGetShortProfileRquest   | [u_gsp](User-Plugin.md#u_gsp) | No attributes                                                                                                                                                             | N/A             |
+| sendSecureQuestionRquest    | [u_gsq](User-Plugin.md#u_gsq) | `l` - username                                                                                                                                                            | N/A             |
+| sendGetUSAStatesList        | [u_gul](User-Plugin.md#u_gul) | No attributes                                                                                                                                                             | N/A             |
+| sendGetFullProfileRquest    | [u_gup](User-Plugin.md#u_gup) | No attributes                                                                                                                                                             | N/A             |
+| sendGetUserStatsRquest      | [u_gus](User-Plugin.md#u_gus) | No attributes                                                                                                                                                             | N/A             |
+| sendGetCountryList          | [u_gwl](User-Plugin.md#u_gwl) | No attributes                                                                                                                                                             | N/A             |
+| sendInvitationResponse      | [u_inr](User-Plugin.md#u_inr) | `f` - from user id<br>`t` - to user id<br>`a` - answer<br>`p` - <br>`bid` - buddy id<br>`gid` - game id                                                                   | N/A             |
+| sendInvitation              | [u_inv](User-Plugin.md#u_inv) | `f` - from user id<br>`t` - to user id<br>`p` - <br>`bid` - buddy id<br>`gid` - game id<br>`av` -                                                                         | N/A             |
+| sendRegisterUserRequest     | [u_reg](User-Plugin.md#u_reg) | `l` - username<br>`p` - password<br>`c` - client id<br>`a` - affiliate id<br>`d` - ad id<br>Nullable:<br>`email`, `sq`, `sa`, `av`, `cs`, `cm`, `fn`, `ln`, `t`, `b`, `g` | N/A             |
+| sendPrivateMsg              | [u_spm](User-Plugin.md#u_spm) | `f` - from user id<br>`t` - to user id<br>`m` - message                                                                                                                   | N/A             |
+| sendSaveProfileRequest      | [u_sup](User-Plugin.md#u_sup) | Nullable:<br>`l` - username<br>`p` - password<br>`c` - client id<br>`a` - affiliate id<br>`d` - ad id<br>`email`, `sq`, `sa`, `av`, `cs`, `cm`, `fn`, `ln`, `t`, `b`, `g` | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name           | XML Tag                       | Description | Client Response |
-| --------------------------- | ----------------------------- | ----------- | --------------- |
-| onReceiveAddBuddy           | [u_abd](User-Plugin.md#u_abd) | N/A         | N/A             |
-| onReceiveAddBuddyRequest    | [u_abr](User-Plugin.md#u_abr) | N/A         | N/A             |
-| onReceiveChangingPassword   | [u_acp](User-Plugin.md#u_acp) | N/A         | N/A             |
-| ???                         | [u_afp](User-Plugin.md#u_afp) | N/A         | N/A             |
-| onReceiveChatStatusBuddy    | [u_ccs](User-Plugin.md#u_ccs) | N/A         | N/A             |
-| onReceiveOnlineStatusBuddy  | [u_cos](User-Plugin.md#u_cos) | N/A         | N/A             |
-| onReceiveChangePhoneStatus  | [u_cph](User-Plugin.md#u_cph) | N/A         | N/A             |
-| onReceiveDeleteBuddy        | [u_dbd](User-Plugin.md#u_dbd) | N/A         | N/A             |
-| onReceiveDeleteBuddyRequest | [u_dbr](User-Plugin.md#u_dbr) | N/A         | N/A             |
-| onReceiveFlagBuddy          | [u_fbd](User-Plugin.md#u_fbd) | N/A         | N/A             |
-| onReceiveBuddyList          | [u_gbl](User-Plugin.md#u_gbl) | N/A         | N/A             |
-| ???                         | [u_gcb](User-Plugin.md#u_gcb) | N/A         | N/A             |
-| ???                         | [u_gcl](User-Plugin.md#u_gcl) | N/A         | N/A             |
-| onFileListRecieve           | [u_gfl](User-Plugin.md#u_gfl) | N/A         | N/A             |
-| ???                         | [u_gsp](User-Plugin.md#u_gsp) | N/A         | N/A             |
-| ???                         | [u_gsq](User-Plugin.md#u_gsq) | N/A         | N/A             |
-| ???                         | [u_gth](User-Plugin.md#u_gth) | N/A         | N/A             |
-| ???                         | [u_gul](User-Plugin.md#u_gul) | N/A         | N/A             |
-| onReceiveUserProfile        | [u_gup](User-Plugin.md#u_gup) | N/A         | N/A             |
-| ???                         | [u_gus](User-Plugin.md#u_gus) | N/A         | N/A             |
-| ???                         | [u_gwl](User-Plugin.md#u_gwl) | N/A         | N/A             |
-| onReceiveInvitationResponse | [u_inr](User-Plugin.md#u_inr) | N/A         | N/A             |
-| onReceiveInvitation         | [u_inv](User-Plugin.md#u_inv) | N/A         | N/A             |
-| setPingTimeout              | [u_p](User-Plugin.md#u_p)     | N/A         | N/A             |
-| onUserRegistrate            | [u_reg](User-Plugin.md#u_reg) | N/A         | N/A             |
-| onReceivePrivateMsg         | [u_rpm](User-Plugin.md#u_rpm) | N/A         | N/A             |
-| onReceivePrivateMsg         | [u_spm](User-Plugin.md#u_spm) | N/A         | N/A             |
-| onProfileUpdate             | [u_sup](User-Plugin.md#u_sup) | N/A         | N/A             |
+| Actionscript Name         | XML Tag                                                      | Description                                                                                                                                                  | Client Response |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
+| addBuddy                  | [u_abd](User-Plugin.md#u_abd)                                | `r` - result ("0" = success)<br>`n` - name<br>`a` - activity status<br>`b` - buddy id<br>`o` - online status<br>`s` - status<br>`bf` - <br>`cf` - <br>`ph` - | N/A             |
+| addBuddyRequest           | [u_abr](User-Plugin.md#u_abr)                                | `b` - buddy id<br>`n` - name                                                                                                                                 | N/A             |
+| onReceiveChangingPassword | [u_acp](User-Plugin.md#u_acp)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
+| ???                       | [u_afp](User-Plugin.md#u_afp)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
+| chatStatusBuddy           | [u_ccs](User-Plugin.md#u_ccs)                                | `id` - buddy id<br>`s` - status                                                                                                                              | N/A             |
+| onlineStatusBuddy         | [u_cos](User-Plugin.md#u_cos)                                | `id` - buddy id<br>`o` - online status                                                                                                                       | N/A             |
+| phoneStatusBuddy          | [u_cph](User-Plugin.md#u_cph)                                | `u` - user id (not sure if buddy)                                                                                                                            | N/A             |
+| deleteBuddy               | [u_dbd](User-Plugin.md#u_dbd)                                | `r` - result ("0" = success)<br>`u` - user id<br>`b` - buddy id                                                                                              | N/A             |
+| deleteBuddyRequest        | [u_dbr](User-Plugin.md#u_dbr)                                | `n` - buddy name                                                                                                                                             | N/A             |
+| flagBuddy                 | [u_fbd](User-Plugin.md#u_fbd)                                | `r` - result ("0" = success)<br>`b` - buddy id<br>`bf` - <br>`cf` -                                                                                          | N/A             |
+| receiveBuddyList          | [u_gbl](User-Plugin.md#u_gbl)                                | `r` - result ("0" = success)<br>Array of child nodes:<br>`id` - <br>`n` - name<br>`o` - online status<br>`s` - status<br>`bf` - <br>`cf` - <br>`ph` -        | N/A             |
+| ???                       | [u_gcb](User-Plugin.md#u_gcb)                                | Unused                                                                                                                                                       | N/A             |
+| ???                       | [u_gcl](User-Plugin.md#u_gcl)                                | Unused                                                                                                                                                       | N/A             |
+| onFileListRecieve         | [u_gfl](User-Plugin.md#u_gfl)                                | See a_gfl                                                                                                                                                    | N/A             |
+| ???                       | [u_gsp](User-Plugin.md#u_gsp)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
+| ???                       | [u_gsq](User-Plugin.md#u_gsq)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
+| ???                       | [u_gth](User-Plugin.md#u_gth)                                | Unused                                                                                                                                                       | N/A             |
+| ???                       | [u_gul](User-Plugin.md#u_gul)                                | Unused                                                                                                                                                       | N/A             |
+| onReceiveUserProfile      | [u_gup](User-Plugin.md#u_gup)                                | `l` - username<br>`sq` - security question<br>`sa` - security answer                                                                                         | N/A             |
+| ???                       | [u_gus](User-Plugin.md#u_gus)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
+| ???                       | [u_gwl](User-Plugin.md#u_gwl)                                | Unused                                                                                                                                                       | N/A             |
+| receiveInvitationResponse | [u_inr](User-Plugin.md#u_inr)                                | `f` - from user<br>`t` - to user                                                                                                                             | N/A             |
+| receiveInvitation         | [u_inv](User-Plugin.md#u_inv)                                | `f` - from user<br>`t` - to user                                                                                                                             | N/A             |
+| setPingTimeout            | [u_p](User-Plugin.md#u_p)                                    | `t` - time                                                                                                                                                   | N/A             |
+| onUserRegistrate          | [u_reg](User-Plugin.md#u_reg)                                | `r` - result ("0" = success)<br>`u` - user id                                                                                                                | N/A             |
+| privateMessage            | [u_rpm](User-Plugin.md#u_rpm), [u_spm](User-Plugin.md#u_spm) | `r` - result ("0","1","2" = success)<br>`f` - from user<br>`t` - to user<br>`m` - message                                                                    | N/A             |
+| onProfileUpdate           | [u_sup](User-Plugin.md#u_sup)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
 
 ## 2 - Chat
 
@@ -138,20 +137,21 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Client to Server (C2S)
 
-| Actionscript Name | XML Tag                   | Description | Server Response |
-| ----------------- | ------------------------- | ----------- | --------------- |
-| sendAction        | [pe](Boxing-Plugin.md#pe) | N/A         | N/A             |
+| Actionscript Name | XML Tag                   | Description                                                                                                                                                                                              | Server Response |
+| ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| sendAction        | [pe](Boxing-Plugin.md#pe) | `bid` - <br>`e` - action name (`dazed`, `hitUp`, `rest`, `knockedOut`, `dodgeLeft`, `dodgeRight`, `upperCut`, `jabRight`, `jabLeft`, `roundhouseLeft`, `roundhouseRight`, `headButt`)<br>`h` - damage hp | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name | XML Tag                   | Description                                     | Client Response |
-| ----------------- | ------------------------- | ----------------------------------------------- | --------------- |
-| newMPRound        | [nr](Boxing-Plugin.md#nr) | N/A                                             | N/A             |
-| N/A               | [oe](Boxing-Plugin.md#oe) | Receives opponent action and pushes it to stack | N/A             |
-| N/A               | [os](Boxing-Plugin.md#os) | N/A                                             | N/A             |
-| N/A               | [pa](Boxing-Plugin.md#pa) | Play again                                      | N/A             |
-| N/A               | [pe](Boxing-Plugin.md#pe) | Receives player action and pushes it to stack   | N/A             |
-| N/A               | [ps](Boxing-Plugin.md#ps) | N/A                                             | N/A             |
+| Actionscript Name | XML Tag                   | Description                                                                                                                                                                                                                                     | Client Response |
+| ----------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| newMPRound        | [nr](Boxing-Plugin.md#nr) | `pl` - player lives<br>`ol` - opponent lives<br>`ph` - player hp<br>`oh` - opponent hp                                                                                                                                                          | N/A             |
+| N/A               | [oe](Boxing-Plugin.md#oe) | Receives opponent action and pushes it to stack<br>`e` - action name (`dazed`, `hitUp`, `rest`, `knockedOut`, `dodgeLeft`, `dodgeRight`, `upperCut`, `jabRight`, `jabLeft`, `roundhouseLeft`, `roundhouseRight`, `headButt`)<br>`h` - damage hp | N/A             |
+| N/A               | [os](Boxing-Plugin.md#os) | `s` - opponent score                                                                                                                                                                                                                            | N/A             |
+| N/A               | [pa](Boxing-Plugin.md#pa) | Play again                                                                                                                                                                                                                                      | N/A             |
+| N/A               | [pe](Boxing-Plugin.md#pe) | Receives player action and pushes it to stack<br>`e` - action name (`dazed`, `hitUp`, `rest`, `knockedOut`, `dodgeLeft`, `dodgeRight`, `upperCut`, `jabRight`, `jabLeft`, `roundhouseLeft`, `roundhouseRight`, `headButt`)                      | N/A             |
+| N/A               | [pr](Boxing-Plugin.md#pr) | `p` - path<br>`k` - delay kick<br>`d` - delay after dodge<br>`z` - daze delay                                                                                                                                                                   |                 |
+| N/A               | [ps](Boxing-Plugin.md#ps) | `s` - player score                                                                                                                                                                                                                              | N/A             |
 
 ## 4 - Mahjongg
 
@@ -159,6 +159,7 @@ An incomplete list of packet messages used to communicate with the online server
 
 | Actionscript Name | XML Tag | Description | Server Response |
 | ----------------- | ------- | ----------- | --------------- |
+|                   |         |             |                 |
 
 ### Server to Client (S2C)
 
@@ -186,34 +187,38 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name                | XML Tag                   | Description        | Client Response |
-| -------------------------------- | ------------------------- | ------------------ | --------------- |
-| N/A                              | [bs](Soccer-Plugin.md#bs) | Receive ball state | N/A             |
-| parseSelected                    | [cc](Soccer-Plugin.md#cc) | N/A                | N/A             |
-| serverMoving                     | [cm](Soccer-Plugin.md#cm) | N/A                | N/A             |
-| startNewRound                    | [nr](Soccer-Plugin.md#nr) | N/A                | N/A             |
-| parseSelectedOpponent            | [oc](Soccer-Plugin.md#oc) | N/A                | N/A             |
-| serverSaidChangeScore (Opponent) | [os](Soccer-Plugin.md#os) | N/A                | N/A             |
-| serverPlayAgain                  | [pa](Soccer-Plugin.md#pa) | Play again         | N/A             |
-| serverSaidChangeScore (Player)   | [ps](Soccer-Plugin.md#ps) | N/A                | N/A             |
+| Actionscript Name                | XML Tag                   | Description                                                                             | Client Response |
+| -------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- | --------------- |
+| N/A                              | [bs](Soccer-Plugin.md#bs) | Receive ball state<br>`c` - result<br>`m` - animtype<br>`lx` - x pos<br>`d` - direction | N/A             |
+| parseSelected                    | [cc](Soccer-Plugin.md#cc) | `c` - character                                                                         | N/A             |
+| serverMoving                     | [cm](Soccer-Plugin.md#cm) | `d` - direction<br>`x` - position                                                       | N/A             |
+| startNewRound                    | [nr](Soccer-Plugin.md#nr) | No attributes                                                                           | N/A             |
+| parseSelectedOpponent            | [oc](Soccer-Plugin.md#oc) | `c` - character                                                                         | N/A             |
+| serverSaidChangeScore (Opponent) | [os](Soccer-Plugin.md#os) | `s` - score                                                                             | N/A             |
+| serverPlayAgain                  | [pa](Soccer-Plugin.md#pa) | No attributes                                                                           | N/A             |
+| serverSaidChangeScore (Player)   | [ps](Soccer-Plugin.md#ps) | `s` - score                                                                             | N/A             |
 
 ## 6 - Pool
 
 ### Client to Server (C2S)
 
-| Actionscript Name | XML Tag | Description | Server Response |
-| ----------------- | ------- | ----------- | --------------- |
+| Actionscript Name | XML Tag                 | Description                                                                                                                                                                                                                                                 | Server Response |
+| ----------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| ReleaseCue        | [cs](Pool-Plugin.md#cs) | `bid` - table id<br>`cx` - cue x<br>`a` - rotation<br>`wx` - SaveX<br>`wy` - SaveY<br>`f` - for                                                                                                                                                             |                 |
+| ReleaseCue        | [sp](Pool-Plugin.md#sp `bid` - table id<br>`dx` - DX<br>`dy` - DY<br>`wx` - SaveX<br>`wy` - SaveY<br>`f` - force<br>`ex` - English X<br>`ey` - English Y<br>`t` - timer<br>`a` - rotation<br><br>Array of `<b>` balls:<br>`x`, `y` - position<br>`j` - index<br>`s` - is pocketed  -  |                 |
+|                   |                                                                                                                                                                                                                                                                                       |                 |
 
 ### Server to Client (S2C)
 
-| Actionscript Name        | XML Tag                 | Description | Client Response |
-| ------------------------ | ----------------------- | ----------- | --------------- |
-| preRollUpdate            | [cs](Pool-Plugin.md#cs) | N/A         | N/A             |
-| setStepRight             | [nt](Pool-Plugin.md#nt) | N/A         | N/A             |
-| N/A                      | [pa](Pool-Plugin.md#pa) | Play again  | N/A             |
-| setChosenPocket          | [pc](Pool-Plugin.md#pc) | N/A         | N/A             |
-| setPlayersScore (Player) | [ps](Pool-Plugin.md#ps) | N/A         | N/A             |
-| SetPartnerHit            | [sp](Pool-Plugin.md#sp) | N/A         | N/A             |
+| Actionscript Name | XML Tag                 | Description                                                                                                                                                               | Client Response |
+| ----------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| preRollUpdate     | [cs](Pool-Plugin.md#cs) | `wx` - cbX<br>`wy` - cbY<br>`a` - rot<br>`f` - force<br>`cx` - cue pos                                                                                                    | N/A             |
+| setStepRight      | [nt](Pool-Plugin.md#nt) | `u` - user id                                                                                                                                                             | N/A             |
+| setPlayersScore   | [os](Pool-Plugin.md#os) | `s` - score                                                                                                                                                               |                 |
+| N/A               | [pa](Pool-Plugin.md#pa) | Play again                                                                                                                                                                | N/A             |
+| setChosenPocket   | [pc](Pool-Plugin.md#pc) | `c` - chosen pocket                                                                                                                                                       | N/A             |
+| setPlayersScore   | [ps](Pool-Plugin.md#ps) | `s` - score                                                                                                                                                               | N/A             |
+| SetPartnerHit     | [sp](Pool-Plugin.md#sp) | `dx` - DX<br>`dy` - DY<br>`wx` - XPOS<br>`wy` - YPOS<br>`f` - POWER<br>`ex` - ENGLISH_X<br>`ey` - ENGLISH_Y<br>`t` - TIMER<br>`a` - CUEROT<br>`cx` - CUEX<br>`p` - POCKET | N/A             |
 
 ## 7 - Galaxy
 
@@ -230,16 +235,16 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name              | XML Tag                             | Description | Client Response |
-| ------------------------------ | ----------------------------------- | ----------- | --------------- |
-| onReceiveGalaxyError           | [ge](Galaxy-Plugin.md#ge)           | N/A         | N/A             |
-| onReceiveLeaderboardStatistics | [gls](Galaxy-Plugin.md#gls)         | N/A         | N/A             |
-| onReceiveProfileVersion        | [lpv](Galaxy-Plugin.md#lpv)         | N/A         | N/A             |
-| setPingTimeout                 | [p](Galaxy-Plugin.md#p)             | N/A         | N/A             |
-| onReceiveLoadProfile           | [profile](Galaxy-Plugin.md#profile) | N/A         | N/A             |
-| onReceiveResults               | [rr](Galaxy-Plugin.md#rr)           | N/A         | N/A             |
-| onReceiveSaveProfile           | [sp](Galaxy-Plugin.md#sp)           | N/A         | N/A             |
-| onReceiveStatisticVersion      | [vsu](Galaxy-Plugin.md#vsu)         | N/A         | N/A             |
+| Actionscript Name              | XML Tag                             | Description                    | Client Response |
+| ------------------------------ | ----------------------------------- | ------------------------------ | --------------- |
+| onReceiveGalaxyError           | [ge](Galaxy-Plugin.md#ge)           | `r` - result ("-0" = continue) | N/A             |
+| onReceiveLeaderboardStatistics | [gls](Galaxy-Plugin.md#gls)         | N/A                            | N/A             |
+| onReceiveProfileVersion        | [lpv](Galaxy-Plugin.md#lpv)         | N/A                            | N/A             |
+| setPingTimeout                 | [p](Galaxy-Plugin.md#p)             | N/A                            | N/A             |
+| onReceiveLoadProfile           | [profile](Galaxy-Plugin.md#profile) | N/A                            | N/A             |
+| onReceiveResults               | [rr](Galaxy-Plugin.md#rr)           | N/A                            | N/A             |
+| onReceiveSaveProfile           | [sp](Galaxy-Plugin.md#sp)           | N/A                            | N/A             |
+| onReceiveStatisticVersion      | [vsu](Galaxy-Plugin.md#vsu)         | N/A                            | N/A             |
 
 ## 8 - Fight
 
