@@ -11,7 +11,7 @@ An incomplete list of packet messages used to communicate with the online server
 | sendFileListRequest       | [a_gfl](Core-Plugin.md#a_gfl) | `c` - client id                                        | N/A             |
 | sendPluginDetailsRequest  | [a_gpd](Core-Plugin.md#a_gpd) | `p` - plugin id                                        | N/A             |
 | sendServiceDetailsRequest | [a_gsd](Core-Plugin.md#a_gsd) | `s` - service id                                       | N/A             |
-| sendServiceListRequest    | [a_gsl](Core-Plugin.md#a_gsl) |                                                        | N/A             |
+| sendServiceListRequest    | [a_gsl](Core-Plugin.md#a_gsl) | No attributes                                          | N/A             |
 | sendLoginGuestRequest     | [a_lgu](Core-Plugin.md#a_lgu) | `c` - client id<br>`a` - affiliate id<br>`d` - ad id   | N/A             |
 | sendLoginUserRequest      | [a_lru](Core-Plugin.md#a_lru) | `n` - username<br>`p` - password<br>`l` - constant `1` | N/A             |
 
