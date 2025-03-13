@@ -2,6 +2,11 @@
 
 An incomplete list of packet messages used to communicate with the online servers in U.B. Funkeys. Submit an issue or message me on the community discord if any of this information is incorrect in practice.
 
+## Notes
+
+ - By default unless stated that there are child nodes, assume inline xml with a space before the file `/>`, like for example `<a_gpd p="2" />`
+ - When playing multiplayer minigames, using chat, or even the galaxy service, the client will append a routing number like for example `1|2|2|0#`, which is the service number, two instances of the plugin number, and then the board/room number. When responding, it is necessary to wrap the response in `<h2_0>{message here}</h2_0>`
+
 ## 0 - Core
 
 ### Client to Server (C2S)
