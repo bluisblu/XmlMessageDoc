@@ -26,6 +26,7 @@ An incomplete list of packet messages used to communicate with the online server
 | onGetServiceList     | [a_gsl](Core-Plugin.md#a_gsl) | N/A         | N/A             |
 | onUserLogin          | [a_lgu](Core-Plugin.md#a_lgu) | N/A         | N/A             |
 | onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | N/A         | N/A             |
+| setPingTimeout       | [p](Core-Plugin.md#p)         | `t` - time  | N/A             |
 
 ## 1 - User
 
@@ -95,40 +96,43 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Client to Server (C2S)
 
-| Actionscript Name                                                                            | XML Tag                 | Description | Server Response |
-| -------------------------------------------------------------------------------------------- | ----------------------- | ----------- | --------------- |
-| sendChangeProperties                                                                         | [cp](Chat-Plugin.md#cp) | N/A         | N/A             |
-| sendCreateRoom                                                                               | [cr](Chat-Plugin.md#cr) | N/A         | N/A             |
-| onItemActivate                                                                               | [ia](Chat-Plugin.md#ia) | N/A         | N/A             |
-| sendJoin (Multiplayer), sendJoinRoom (Chat), SEND_JoinGame (Fight), SEND_JoinGameRTT (Fight) | [jn](Chat-Plugin.md#jn) | N/A         | N/A             |
-| sendKickOutFromCrib                                                                          | [ko](Chat-Plugin.md#ko) | N/A         | N/A             |
-| sendChatMsg                                                                                  | [ms](Chat-Plugin.md#ms) | N/A         | N/A             |
-| onPlayerMove                                                                                 | [mv](Chat-Plugin.md#mv) | N/A         | N/A             |
-| onOpenDoor                                                                                   | [od](Chat-Plugin.md#od) | N/A         | N/A             |
-| onPutItem                                                                                    | [pi](Chat-Plugin.md#pi) | N/A         | N/A             |
-| sendPlayerLocation                                                                           | [pl](Chat-Plugin.md#pl) | N/A         | N/A             |
-| onRemoveItem                                                                                 | [ri](Chat-Plugin.md#ri) | N/A         | N/A             |
-| sendEvent                                                                                    | [se](Chat-Plugin.md#se) | N/A         | N/A             |
+| Actionscript Name                    | XML Tag                 | Description                                                                                                                       | Server Response |
+| ------------------------------------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| sendChangeProperties                 | [cp](Chat-Plugin.md#cp) | Changes properties, has an inner `pr` element<br>`t` - room type<br>`id` - room id                                                | N/A             |
+| sendCreateRoom                       | [cr](Chat-Plugin.md#cr) | Creates a room, has an inner `pr` element<br>`t` - room type                                                                      | N/A             |
+| onItemActivate                       | [ia](Chat-Plugin.md#ia) | `o` - count(?)<br>`s` - screen<br>`id` - user id                                                                                  | N/A             |
+| sendJoinRoom                         | [jn](Chat-Plugin.md#jn) | Joins a room, has an inner `pr` element<br>`t` - room type<br>`id` - room id                                                      | N/A             |
+| sendKickOutFromCrib                  | [ko](Chat-Plugin.md#ko) | `t` - room type<br>`id` - room id<br>`u` - user id                                                                                | N/A             |
+| sendChatMsg                          | [ms](Chat-Plugin.md#ms) | `m` - message<br>`t` - room type<br>`id` - room id                                                                                | N/A             |
+| onPlayerMove                         | [mv](Chat-Plugin.md#mv) | `n` - node (eg. `n="3:5"`)<br>`s` - screen<br>`id` - user id                                                                      | N/A             |
+| onOpenDoor                           | [od](Chat-Plugin.md#od) | `f` - from screen<br>`t` - to screen<br>`id` - user id                                                                            | N/A             |
+| onPutItem                            | [pi](Chat-Plugin.md#pi) | `id` - user id<br>`x`, `y` - position<br>`o` - count(?)<br>`s` - scale<br>`sid` - screen                                          | N/A             |
+| sendPlayerLocation                   | [pl](Chat-Plugin.md#pl) | `n` - node (eg. `n="3:5"`)<br>`s` - screen<br>`id` - user id<br>`a` - visible                                                     | N/A             |
+| sendChangeProperties<br>sendJoinRoom | [pr](Chat-Plugin.md#pr) | May contain inner crib xml data from sendCreateRoom<br>`n` - user name<br>`uid` - user id<br>`f` - funkey id<br>`dl` - dirt level |                 |
+| onRemoveItem                         | [ri](Chat-Plugin.md#ri) | `s` - screen<br>`o` - count(?)                                                                                                    | N/A             |
+| sendEvent                            | [se](Chat-Plugin.md#se) | Sends a special event                                                                                                             | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name           | XML Tag                 | Description                                                                                                                               | Client Response |
-| --------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| onReceiveCreatorLeaveCrib   | [cd](Chat-Plugin.md#cd) | N/A                                                                                                                                       | N/A             |
-| onReceivePlayerProperties   | [cp](Chat-Plugin.md#cp) | N/A                                                                                                                                       | N/A             |
-| onReceiveCreateRoom         | [cr](Chat-Plugin.md#cr) | N/A                                                                                                                                       | N/A             |
-| onJoin, MSGHND_Join (Fight) | [jn](Chat-Plugin.md#jn) | N/A                                                                                                                                       | N/A             |
-| onReceiveKickOutPlayer      | [ko](Chat-Plugin.md#ko) | N/A                                                                                                                                       | N/A             |
-| onReceiveMsg                | [ms](Chat-Plugin.md#ms) | N/A                                                                                                                                       | N/A             |
-| onReceivePlayerDisconnected | [of](Chat-Plugin.md#of) | N/A                                                                                                                                       | N/A             |
-| onReceivePlayerConnected    | [on](Chat-Plugin.md#on) | N/A                                                                                                                                       | N/A             |
-| setPingTimeout              | [p](Chat-Plugin.md#p)   | N/A                                                                                                                                       | N/A             |
-| onReceivePlayerRemove       | [pd](Chat-Plugin.md#pd) | N/A                                                                                                                                       | N/A             |
-| N/A                         | [pi](Chat-Plugin.md#pi) | Player's turn ends because they didn't make a make before the timer ended (Mahjongg), Calls "putItemForChat" on the current screen (Chat) | N/A             |
-| onReceivePlayerList         | [pj](Chat-Plugin.md#pj) | N/A                                                                                                                                       | N/A             |
-| N/A                         | [pl](Chat-Plugin.md#pl) | Receive player location                                                                                                                   | N/A             |
-| N/A                         | [ri](Chat-Plugin.md#ri) | Calls "removeItemForChat" on the current screen                                                                                           | N/A             |
-| onReceiveSpecialEvent       | [se](Chat-Plugin.md#se) | N/A                                                                                                                                       | N/A             |
+| Actionscript Name           | XML Tag                 | Description                                                                                                                                      | Client Response |
+| --------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |
+| onReceiveCreatorLeaveCrib   | [cd](Chat-Plugin.md#cd) | `id` - user id                                                                                                                                   | N/A             |
+| onReceivePlayerProperties   | [cp](Chat-Plugin.md#cp) | Array of player properties, name attribute may be unnecessary as it gets player by id<br>`uid` - user id<br>`f` - funkey id<br>`dl` - dirt level | N/A             |
+| onReceiveCreateRoom         | [cr](Chat-Plugin.md#cr) | `mx` - max guests<br>Special event: <br>`id` - user id                                                                                           | N/A             |
+| N/A                         | [ia](Chat-Plugin.md#ia) | Special event: Item activate<br>`id` - user id<br>`o` - count(?)<br>`s` - screen<br>`a` - ?                                                      |                 |
+| onJoin                      | [jn](Chat-Plugin.md#jn) | `r` - result (0 for success)<br>`id` - room id                                                                                                   | N/A             |
+| onReceiveKickOutPlayer      | [ko](Chat-Plugin.md#ko) | `id` - user id                                                                                                                                   | N/A             |
+| onReceiveMsg                | [ms](Chat-Plugin.md#ms) | `m` - message<br>`n` - username                                                                                                                  | N/A             |
+| N/A                         | [mv](Chat-Plugin.md#mv) | Special event: Other player moved<br>`id` - user id<br>`n` - node (eg. `n="3:5"`)<br>`s` - screen                                                | N/A             |
+| N/A                         | [od](Chat-Plugin.md#od) | Special event: Open door<br>`id` - user id<br>`f` - from screen<br>`t` - to screen                                                               | N/A             |
+| onReceivePlayerDisconnected | [of](Chat-Plugin.md#of) | `id` - user id                                                                                                                                   | N/A             |
+| onReceivePlayerConnected    | [on](Chat-Plugin.md#on) | `id` - user id                                                                                                                                   | N/A             |
+| onReceivePlayerRemove       | [pd](Chat-Plugin.md#pd) | `id` - user id                                                                                                                                   | N/A             |
+| N/A                         | [pi](Chat-Plugin.md#pi) | Special event: Put item<br>`id` - user id<br>`x`, `y` - position<br>`o` - count(?), nullable<br>`s` - screen, nullable                           | N/A             |
+| onReceivePlayerJoin         | [pj](Chat-Plugin.md#pj) | Array of player properties<br>`f` - funkey id<br>`uid` - user id<br>`n` - user name<br>`dl` - dirt level                                         | N/A             |
+| N/A                         | [pl](Chat-Plugin.md#pl) | Special event: Receive player location<br>`id` - user id<br>`a` - active (`== 1`)<br>`n` - node (eg. `n="3:5"`)<br>`s` - screen                  | N/A             |
+| N/A                         | [ri](Chat-Plugin.md#ri) | Special event: Remove item<br>`o` - count(?)<br>`s` - screen                                                                                     | N/A             |
+| onReceiveSpecialEvent       | [se](Chat-Plugin.md#se) | Inner xml nodes are parsed as a special event                                                                                                    | N/A             |
 
 ## 3 - Boxing
 
@@ -140,14 +144,14 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name                                                            | XML Tag                   | Description                                     | Client Response |
-| ---------------------------------------------------------------------------- | ------------------------- | ----------------------------------------------- | --------------- |
-| startNewRound (Soccer), newMPRound (Boxing)                                  | [nr](Boxing-Plugin.md#nr) | N/A                                             | N/A             |
-| N/A                                                                          | [oe](Boxing-Plugin.md#oe) | Receives opponent action and pushes it to stack | N/A             |
-| serverSaidChangeScore (Opponent) (Soccer), setPlayersScore (Opponent) (Pool) | [os](Boxing-Plugin.md#os) | N/A                                             | N/A             |
-| serverPlayAgain (Soccer)                                                     | [pa](Boxing-Plugin.md#pa) | Play again                                      | N/A             |
-| N/A                                                                          | [pe](Boxing-Plugin.md#pe) | Receives player action and pushes it to stack   | N/A             |
-| serverSaidChangeScore (Player) (Soccer), setPlayersScore (Player) (Pool)     | [ps](Boxing-Plugin.md#ps) | N/A                                             | N/A             |
+| Actionscript Name | XML Tag                   | Description                                     | Client Response |
+| ----------------- | ------------------------- | ----------------------------------------------- | --------------- |
+| newMPRound        | [nr](Boxing-Plugin.md#nr) | N/A                                             | N/A             |
+| N/A               | [oe](Boxing-Plugin.md#oe) | Receives opponent action and pushes it to stack | N/A             |
+| N/A               | [os](Boxing-Plugin.md#os) | N/A                                             | N/A             |
+| N/A               | [pa](Boxing-Plugin.md#pa) | Play again                                      | N/A             |
+| N/A               | [pe](Boxing-Plugin.md#pe) | Receives player action and pushes it to stack   | N/A             |
+| N/A               | [ps](Boxing-Plugin.md#ps) | N/A                                             | N/A             |
 
 ## 4 - Mahjongg
 
@@ -166,7 +170,7 @@ An incomplete list of packet messages used to communicate with the online server
 | N/A               | [pa](Mahjongg-Plugin.md#pa) | Play again                                         | N/A             |
 | N/A               | [pi](Mahjongg-Plugin.md#pi) | Player info update<br>`s` - score<br>`l` - lives   | N/A             |
 | N/A               | [pt](Mahjongg-Plugin.md#pt) | Player's turn<br>`t` - time                        | N/A             |
-| N/A               | [tr](Mahjongg-Plugin.md#tr) | Removes a pair of tiles                            | N/A             |
+| N/A               | [tr](Mahjongg-Plugin.md#tr) | Removes a pair of tiles<br>`x`,`y`, `z` - position | N/A             |
 | N/A               | [ts](Mahjongg-Plugin.md#ts) | Resets the tiles<br>`s` - seed                     | N/A             |
 
 ## 5 - Soccer
@@ -182,16 +186,16 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name                                                            | XML Tag                   | Description        | Client Response |
-| ---------------------------------------------------------------------------- | ------------------------- | ------------------ | --------------- |
-| N/A                                                                          | [bs](Soccer-Plugin.md#bs) | Receive ball state | N/A             |
-| parseSelected                                                                | [cc](Soccer-Plugin.md#cc) | N/A                | N/A             |
-| serverMoving                                                                 | [cm](Soccer-Plugin.md#cm) | N/A                | N/A             |
-| startNewRound (Soccer), newMPRound (Boxing)                                  | [nr](Soccer-Plugin.md#nr) | N/A                | N/A             |
-| parseSelectedOpponent                                                        | [oc](Soccer-Plugin.md#oc) | N/A                | N/A             |
-| serverSaidChangeScore (Opponent) (Soccer), setPlayersScore (Opponent) (Pool) | [os](Soccer-Plugin.md#os) | N/A                | N/A             |
-| serverPlayAgain (Soccer)                                                     | [pa](Soccer-Plugin.md#pa) | Play again         | N/A             |
-| serverSaidChangeScore (Player) (Soccer), setPlayersScore (Player) (Pool)     | [ps](Soccer-Plugin.md#ps) | N/A                | N/A             |
+| Actionscript Name                | XML Tag                   | Description        | Client Response |
+| -------------------------------- | ------------------------- | ------------------ | --------------- |
+| N/A                              | [bs](Soccer-Plugin.md#bs) | Receive ball state | N/A             |
+| parseSelected                    | [cc](Soccer-Plugin.md#cc) | N/A                | N/A             |
+| serverMoving                     | [cm](Soccer-Plugin.md#cm) | N/A                | N/A             |
+| startNewRound                    | [nr](Soccer-Plugin.md#nr) | N/A                | N/A             |
+| parseSelectedOpponent            | [oc](Soccer-Plugin.md#oc) | N/A                | N/A             |
+| serverSaidChangeScore (Opponent) | [os](Soccer-Plugin.md#os) | N/A                | N/A             |
+| serverPlayAgain                  | [pa](Soccer-Plugin.md#pa) | Play again         | N/A             |
+| serverSaidChangeScore (Player)   | [ps](Soccer-Plugin.md#ps) | N/A                | N/A             |
 
 ## 6 - Pool
 
@@ -202,98 +206,98 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name                                                        | XML Tag                 | Description | Client Response |
-| ------------------------------------------------------------------------ | ----------------------- | ----------- | --------------- |
-| preRollUpdate                                                            | [cs](Pool-Plugin.md#cs) | N/A         | N/A             |
-| setStepRight (Pool), receiveTurnNotification (Chinese Checkers)          | [nt](Pool-Plugin.md#nt) | N/A         | N/A             |
-| serverPlayAgain (Soccer)                                                 | [pa](Pool-Plugin.md#pa) | Play again  | N/A             |
-| setChosenPocket                                                          | [pc](Pool-Plugin.md#pc) | N/A         | N/A             |
-| serverSaidChangeScore (Player) (Soccer), setPlayersScore (Player) (Pool) | [ps](Pool-Plugin.md#ps) | N/A         | N/A             |
-| onReceiveSaveProfile (Galaxy), SetPartnerHit (Pool)                      | [sp](Pool-Plugin.md#sp) | N/A         | N/A             |
+| Actionscript Name        | XML Tag                 | Description | Client Response |
+| ------------------------ | ----------------------- | ----------- | --------------- |
+| preRollUpdate            | [cs](Pool-Plugin.md#cs) | N/A         | N/A             |
+| setStepRight             | [nt](Pool-Plugin.md#nt) | N/A         | N/A             |
+| N/A                      | [pa](Pool-Plugin.md#pa) | Play again  | N/A             |
+| setChosenPocket          | [pc](Pool-Plugin.md#pc) | N/A         | N/A             |
+| setPlayersScore (Player) | [ps](Pool-Plugin.md#ps) | N/A         | N/A             |
+| SetPartnerHit            | [sp](Pool-Plugin.md#sp) | N/A         | N/A             |
 
 ## 7 - Galaxy
 
 ### Client to Server (C2S)
 
-| Actionscript Name                                             | XML Tag                     | Description | Server Response |
-| ------------------------------------------------------------- | --------------------------- | ----------- | --------------- |
-| sendGetLeaderboardStatisticRequest                            | [gls](Galaxy-Plugin.md#gls) | N/A         | N/A             |
-| sendLoadProfileRequest                                        | [lp](Galaxy-Plugin.md#lp)   | N/A         | N/A             |
-| sendProfileVersionRequest                                     | [lpv](Galaxy-Plugin.md#lpv) | N/A         | N/A             |
-| sendSaveProfileRequest (Galaxy), sendStrikeParameter (Soccer) | [sp](Galaxy-Plugin.md#sp)   | N/A         | N/A             |
-| sendSaveProfilePartRequest                                    | [spp](Galaxy-Plugin.md#spp) | N/A         | N/A             |
-| sendStatisticVersionRequest                                   | [vsu](Galaxy-Plugin.md#vsu) | N/A         | N/A             |
+| Actionscript Name                  | XML Tag                     | Description | Server Response |
+| ---------------------------------- | --------------------------- | ----------- | --------------- |
+| sendGetLeaderboardStatisticRequest | [gls](Galaxy-Plugin.md#gls) | N/A         | N/A             |
+| sendLoadProfileRequest             | [lp](Galaxy-Plugin.md#lp)   | N/A         | N/A             |
+| sendProfileVersionRequest          | [lpv](Galaxy-Plugin.md#lpv) | N/A         | N/A             |
+| sendSaveProfileRequest             | [sp](Galaxy-Plugin.md#sp)   | N/A         | N/A             |
+| sendSaveProfilePartRequest         | [spp](Galaxy-Plugin.md#spp) | N/A         | N/A             |
+| sendStatisticVersionRequest        | [vsu](Galaxy-Plugin.md#vsu) | N/A         | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name                                   | XML Tag                             | Description | Client Response |
-| --------------------------------------------------- | ----------------------------------- | ----------- | --------------- |
-| onReceiveGalaxyError                                | [ge](Galaxy-Plugin.md#ge)           | N/A         | N/A             |
-| onReceiveLeaderboardStatistics                      | [gls](Galaxy-Plugin.md#gls)         | N/A         | N/A             |
-| onReceiveProfileVersion                             | [lpv](Galaxy-Plugin.md#lpv)         | N/A         | N/A             |
-| setPingTimeout                                      | [p](Galaxy-Plugin.md#p)             | N/A         | N/A             |
-| onReceiveLoadProfile                                | [profile](Galaxy-Plugin.md#profile) | N/A         | N/A             |
-| onReceiveResults                                    | [rr](Galaxy-Plugin.md#rr)           | N/A         | N/A             |
-| onReceiveSaveProfile (Galaxy), SetPartnerHit (Pool) | [sp](Galaxy-Plugin.md#sp)           | N/A         | N/A             |
-| onReceiveStatisticVersion                           | [vsu](Galaxy-Plugin.md#vsu)         | N/A         | N/A             |
+| Actionscript Name              | XML Tag                             | Description | Client Response |
+| ------------------------------ | ----------------------------------- | ----------- | --------------- |
+| onReceiveGalaxyError           | [ge](Galaxy-Plugin.md#ge)           | N/A         | N/A             |
+| onReceiveLeaderboardStatistics | [gls](Galaxy-Plugin.md#gls)         | N/A         | N/A             |
+| onReceiveProfileVersion        | [lpv](Galaxy-Plugin.md#lpv)         | N/A         | N/A             |
+| setPingTimeout                 | [p](Galaxy-Plugin.md#p)             | N/A         | N/A             |
+| onReceiveLoadProfile           | [profile](Galaxy-Plugin.md#profile) | N/A         | N/A             |
+| onReceiveResults               | [rr](Galaxy-Plugin.md#rr)           | N/A         | N/A             |
+| onReceiveSaveProfile           | [sp](Galaxy-Plugin.md#sp)           | N/A         | N/A             |
+| onReceiveStatisticVersion      | [vsu](Galaxy-Plugin.md#vsu)         | N/A         | N/A             |
 
 ## 8 - Fight
 
 ### Client to Server (C2S)
 
-| Actionscript Name                                                                            | XML Tag                      | Description | Server Response |
-| -------------------------------------------------------------------------------------------- | ---------------------------- | ----------- | --------------- |
-| SEND_Block                                                                                   | [bl](Fight-Plugin.md#bl)     | N/A         | N/A             |
-| SEND_ExtendedPunch                                                                           | [_ep](Fight-Plugin.md#_ep)   | N/A         | N/A             |
-| SEND_HeadButt                                                                                | [_hb](Fight-Plugin.md#_hb)   | N/A         | N/A             |
-| SEND_HealthReduction                                                                         | [_hr](Fight-Plugin.md#_hr)   | N/A         | N/A             |
-| SEND_Hit                                                                                     | [_ht](Fight-Plugin.md#_ht)   | N/A         | N/A             |
-| SEND_JumpKick                                                                                | [_jk](Fight-Plugin.md#_jk)   | N/A         | N/A             |
-| SEND_Jump                                                                                    | [_jm](Fight-Plugin.md#_jm)   | N/A         | N/A             |
-| sendJoin (Multiplayer), sendJoinRoom (Chat), SEND_JoinGame (Fight), SEND_JoinGameRTT (Fight) | [jn](Fight-Plugin.md#jn)     | N/A         | N/A             |
-| SEND_Kick                                                                                    | [_ki](Fight-Plugin.md#_ki)   | N/A         | N/A             |
-| SEND_Move                                                                                    | [_mv](Fight-Plugin.md#_mv)   | N/A         | N/A             |
-| SEND_Ping                                                                                    | [ping](Fight-Plugin.md#ping) | N/A         | N/A             |
-| SEND_Punch                                                                                   | [_pu](Fight-Plugin.md#_pu)   | N/A         | N/A             |
-| SEND_RTT                                                                                     | [rtt](Fight-Plugin.md#rtt)   | N/A         | N/A             |
-| SEND_SpecialAction                                                                           | [_sa](Fight-Plugin.md#_sa)   | N/A         | N/A             |
-| SEND_Score                                                                                   | [_scr](Fight-Plugin.md#_scr) | N/A         | N/A             |
-| SEND_SoftReconciliation                                                                      | [_sr](Fight-Plugin.md#_sr)   | N/A         | N/A             |
-| SEND_Stop                                                                                    | [_st](Fight-Plugin.md#_st)   | N/A         | N/A             |
-| SEND_Unblock                                                                                 | [ul](Fight-Plugin.md#ul)     | N/A         | N/A             |
+| Actionscript Name                 | XML Tag                      | Description | Server Response |
+| --------------------------------- | ---------------------------- | ----------- | --------------- |
+| SEND_Block                        | [bl](Fight-Plugin.md#bl)     | N/A         | N/A             |
+| SEND_ExtendedPunch                | [_ep](Fight-Plugin.md#_ep)   | N/A         | N/A             |
+| SEND_HeadButt                     | [_hb](Fight-Plugin.md#_hb)   | N/A         | N/A             |
+| SEND_HealthReduction              | [_hr](Fight-Plugin.md#_hr)   | N/A         | N/A             |
+| SEND_Hit                          | [_ht](Fight-Plugin.md#_ht)   | N/A         | N/A             |
+| SEND_JumpKick                     | [_jk](Fight-Plugin.md#_jk)   | N/A         | N/A             |
+| SEND_Jump                         | [_jm](Fight-Plugin.md#_jm)   | N/A         | N/A             |
+| SEND_JoinGame<br>SEND_JoinGameRTT | [jn](Fight-Plugin.md#jn)     | N/A         | N/A             |
+| SEND_Kick                         | [_ki](Fight-Plugin.md#_ki)   | N/A         | N/A             |
+| SEND_Move                         | [_mv](Fight-Plugin.md#_mv)   | N/A         | N/A             |
+| SEND_Ping                         | [ping](Fight-Plugin.md#ping) | N/A         | N/A             |
+| SEND_Punch                        | [_pu](Fight-Plugin.md#_pu)   | N/A         | N/A             |
+| SEND_RTT                          | [rtt](Fight-Plugin.md#rtt)   | N/A         | N/A             |
+| SEND_SpecialAction                | [_sa](Fight-Plugin.md#_sa)   | N/A         | N/A             |
+| SEND_Score                        | [_scr](Fight-Plugin.md#_scr) | N/A         | N/A             |
+| SEND_SoftReconciliation           | [_sr](Fight-Plugin.md#_sr)   | N/A         | N/A             |
+| SEND_Stop                         | [_st](Fight-Plugin.md#_st)   | N/A         | N/A             |
+| SEND_Unblock                      | [ul](Fight-Plugin.md#ul)     | N/A         | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name           | XML Tag                      | Description        | Client Response |
-| --------------------------- | ---------------------------- | ------------------ | --------------- |
-| MSGHND_ActionAllowance      | [aka](Fight-Plugin.md#aka)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [akd](Fight-Plugin.md#akd)   | N/A                | N/A             |
-| MSGHND_Block                | [bl](Fight-Plugin.md#bl)     | N/A                | N/A             |
-| MSGHND_ExtendedPunch        | [_ep](Fight-Plugin.md#_ep)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [epa](Fight-Plugin.md#epa)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [epd](Fight-Plugin.md#epd)   | N/A                | N/A             |
-| gameOver (Multiplayer)      | [go](Fight-Plugin.md#go)     | N/A                | N/A             |
-| MSGHND_HeadButt             | [_hb](Fight-Plugin.md#_hb)   | N/A                | N/A             |
-| MSGHND_HealthReduction      | [_hr](Fight-Plugin.md#_hr)   | N/A                | N/A             |
-| MSGHND_Hit                  | [_ht](Fight-Plugin.md#_ht)   | N/A                | N/A             |
-| MSGHND_JumpKick             | [_jk](Fight-Plugin.md#_jk)   | N/A                | N/A             |
-| MSGHND_Jump                 | [_jm](Fight-Plugin.md#_jm)   | N/A                | N/A             |
-| onJoin, MSGHND_Join (Fight) | [jn](Fight-Plugin.md#jn)     | N/A                | N/A             |
-| MSGHND_Kick                 | [_ki](Fight-Plugin.md#_ki)   | N/A                | N/A             |
-| N/A                         | [lv](Fight-Plugin.md#lv)     | N/A                | N/A             |
-| MSGHND_Move                 | [_mv](Fight-Plugin.md#_mv)   | N/A                | N/A             |
-| MSGHND_Ping                 | [ping](Fight-Plugin.md#ping) | N/A                | N/A             |
-| MSGHND_Punch                | [_pu](Fight-Plugin.md#_pu)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [rka](Fight-Plugin.md#rka)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [rkd](Fight-Plugin.md#rkd)   | N/A                | N/A             |
-| MSGHND_RoundOver            | [ro](Fight-Plugin.md#ro)     | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [rpa](Fight-Plugin.md#rpa)   | N/A                | N/A             |
-| MSGHND_ActionAllowance      | [rpd](Fight-Plugin.md#rpd)   | N/A                | N/A             |
-| MSGHND_SpecialAction        | [_sa](Fight-Plugin.md#_sa)   | N/A                | N/A             |
-| N/A                         | [_scr](Fight-Plugin.md#_scr) | Set opponent score | N/A             |
-| MSGHND_SoftReconciliation   | [_sr](Fight-Plugin.md#_sr)   | N/A                | N/A             |
-| MSGHND_Stop                 | [_st](Fight-Plugin.md#_st)   | N/A                | N/A             |
-| MSGHND_Unblock              | [ul](Fight-Plugin.md#ul)     | N/A                | N/A             |
+| Actionscript Name         | XML Tag                      | Description        | Client Response |
+| ------------------------- | ---------------------------- | ------------------ | --------------- |
+| MSGHND_ActionAllowance    | [aka](Fight-Plugin.md#aka)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [akd](Fight-Plugin.md#akd)   | N/A                | N/A             |
+| MSGHND_Block              | [bl](Fight-Plugin.md#bl)     | N/A                | N/A             |
+| MSGHND_ExtendedPunch      | [_ep](Fight-Plugin.md#_ep)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [epa](Fight-Plugin.md#epa)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [epd](Fight-Plugin.md#epd)   | N/A                | N/A             |
+| N/A                       | [go](Fight-Plugin.md#go)     | Game over          | N/A             |
+| MSGHND_HeadButt           | [_hb](Fight-Plugin.md#_hb)   | N/A                | N/A             |
+| MSGHND_HealthReduction    | [_hr](Fight-Plugin.md#_hr)   | N/A                | N/A             |
+| MSGHND_Hit                | [_ht](Fight-Plugin.md#_ht)   | N/A                | N/A             |
+| MSGHND_JumpKick           | [_jk](Fight-Plugin.md#_jk)   | N/A                | N/A             |
+| MSGHND_Jump               | [_jm](Fight-Plugin.md#_jm)   | N/A                | N/A             |
+| MSGHND_Join               | [jn](Fight-Plugin.md#jn)     | N/A                | N/A             |
+| MSGHND_Kick               | [_ki](Fight-Plugin.md#_ki)   | N/A                | N/A             |
+| N/A                       | [lv](Fight-Plugin.md#lv)     | Leave game         | N/A             |
+| MSGHND_Move               | [_mv](Fight-Plugin.md#_mv)   | N/A                | N/A             |
+| MSGHND_Ping               | [ping](Fight-Plugin.md#ping) | N/A                | N/A             |
+| MSGHND_Punch              | [_pu](Fight-Plugin.md#_pu)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [rka](Fight-Plugin.md#rka)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [rkd](Fight-Plugin.md#rkd)   | N/A                | N/A             |
+| MSGHND_RoundOver          | [ro](Fight-Plugin.md#ro)     | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [rpa](Fight-Plugin.md#rpa)   | N/A                | N/A             |
+| MSGHND_ActionAllowance    | [rpd](Fight-Plugin.md#rpd)   | N/A                | N/A             |
+| MSGHND_SpecialAction      | [_sa](Fight-Plugin.md#_sa)   | N/A                | N/A             |
+| N/A                       | [_scr](Fight-Plugin.md#_scr) | Set opponent score | N/A             |
+| MSGHND_SoftReconciliation | [_sr](Fight-Plugin.md#_sr)   | N/A                | N/A             |
+| MSGHND_Stop               | [_st](Fight-Plugin.md#_st)   | N/A                | N/A             |
+| MSGHND_Unblock            | [ul](Fight-Plugin.md#ul)     | N/A                | N/A             |
 
 ## 9 - Chinese Checkers
 
@@ -304,11 +308,11 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Server to Client (S2C)
 
-| Actionscript Name                                               | XML Tag                             | Description | Client Response |
-| --------------------------------------------------------------- | ----------------------------------- | ----------- | --------------- |
-| receiveMovement                                                 | [mv](Chinese-Checkers-Plugin.md#mv) | N/A         | N/A             |
-| setStepRight (Pool), receiveTurnNotification (Chinese Checkers) | [nt](Chinese-Checkers-Plugin.md#nt) | N/A         | N/A             |
-| serverPlayAgain (Soccer)                                        | [pa](Chinese-Checkers-Plugin.md#pa) | Play again  | N/A             |
+| Actionscript Name       | XML Tag                             | Description | Client Response |
+| ----------------------- | ----------------------------------- | ----------- | --------------- |
+| receiveMovement         | [mv](Chinese-Checkers-Plugin.md#mv) | N/A         | N/A             |
+| receiveTurnNotification | [nt](Chinese-Checkers-Plugin.md#nt) | N/A         | N/A             |
+| N/A                     | [pa](Chinese-Checkers-Plugin.md#pa) | Play again  | N/A             |
 
 ## 10 - Trunk
 
@@ -386,27 +390,27 @@ An incomplete list of packet messages used to communicate with the online server
 
 ### Client to Server (C2S)
 
-| Actionscript Name                                                                            | XML Tag                        | Description | Server Response |
-| -------------------------------------------------------------------------------------------- | ------------------------------ | ----------- | --------------- |
-| clickOfferDrawAnswerNo                                                                       | [dr](Multiplayer-Plugin.md#dr) | N/A         | N/A             |
-| clickOfferDrawAnswerYes                                                                      | [dw](Multiplayer-Plugin.md#dw) | N/A         | N/A             |
-| getFilesPath                                                                                 | [fp](Multiplayer-Plugin.md#fp) | N/A         | N/A             |
-| sendJoin (Multiplayer), sendJoinRoom (Chat), SEND_JoinGame (Fight), SEND_JoinGameRTT (Fight) | [jn](Multiplayer-Plugin.md#jn) | N/A         | N/A             |
-| sendLeaveGame                                                                                | [lv](Multiplayer-Plugin.md#lv) | N/A         | N/A             |
-| sendChatMsg                                                                                  | [ms](Multiplayer-Plugin.md#ms) | N/A         | N/A             |
-| sendPlayAgain                                                                                | [pa](Multiplayer-Plugin.md#pa) | N/A         | N/A             |
-| sendReadyToGame                                                                              | [rp](Multiplayer-Plugin.md#rp) | N/A         | N/A             |
+| Actionscript Name       | XML Tag                        | Description | Server Response |
+| ----------------------- | ------------------------------ | ----------- | --------------- |
+| clickOfferDrawAnswerNo  | [dr](Multiplayer-Plugin.md#dr) | N/A         | N/A             |
+| clickOfferDrawAnswerYes | [dw](Multiplayer-Plugin.md#dw) | N/A         | N/A             |
+| getFilesPath            | [fp](Multiplayer-Plugin.md#fp) | N/A         | N/A             |
+| sendJoin                | [jn](Multiplayer-Plugin.md#jn) | N/A         | N/A             |
+| sendLeaveGame           | [lv](Multiplayer-Plugin.md#lv) | N/A         | N/A             |
+| sendChatMsg             | [ms](Multiplayer-Plugin.md#ms) | N/A         | N/A             |
+| sendPlayAgain           | [pa](Multiplayer-Plugin.md#pa) | N/A         | N/A             |
+| sendReadyToGame         | [rp](Multiplayer-Plugin.md#rp) | N/A         | N/A             |
 
 ### Server to Client (S2C)
 
-| Actionscript Name           | XML Tag                        | Description                        | Client Response |
-| --------------------------- | ------------------------------ | ---------------------------------- | --------------- |
-| opponentOfferDraw           | [dr](Multiplayer-Plugin.md#dr) | offerdrawdenied                    | N/A             |
-| opponentOfferDraw           | [dw](Multiplayer-Plugin.md#dw) | receiveofferdraw                   | N/A             |
-| loadFiles                   | [fp](Multiplayer-Plugin.md#fp) | N/A                                | N/A             |
-| gameOver (Multiplayer)      | [go](Multiplayer-Plugin.md#go) | N/A                                | N/A             |
-| onJoin, MSGHND_Join (Fight) | [jn](Multiplayer-Plugin.md#jn) | N/A                                | N/A             |
-| N/A                         | [lv](Multiplayer-Plugin.md#lv) | Calls "CloseModule" via setTimeout | N/A             |
-| onReceiveMsg                | [ms](Multiplayer-Plugin.md#ms) | N/A                                | N/A             |
-| opponentJoin                | [oj](Multiplayer-Plugin.md#oj) | N/A                                | N/A             |
-| startGame                   | [sg](Multiplayer-Plugin.md#sg) | N/A                                | N/A             |
+| Actionscript Name | XML Tag                        | Description      | Client Response |
+| ----------------- | ------------------------------ | ---------------- | --------------- |
+| opponentOfferDraw | [dr](Multiplayer-Plugin.md#dr) | offerdrawdenied  | N/A             |
+| opponentOfferDraw | [dw](Multiplayer-Plugin.md#dw) | receiveofferdraw | N/A             |
+| loadFiles         | [fp](Multiplayer-Plugin.md#fp) | N/A              | N/A             |
+| gameOver          | [go](Multiplayer-Plugin.md#go) | N/A              | N/A             |
+| onJoin            | [jn](Multiplayer-Plugin.md#jn) | N/A              | N/A             |
+| N/A               | [lv](Multiplayer-Plugin.md#lv) | Leave game       | N/A             |
+| onReceiveMsg      | [ms](Multiplayer-Plugin.md#ms) | N/A              | N/A             |
+| opponentJoin      | [oj](Multiplayer-Plugin.md#oj) | N/A              | N/A             |
+| startGame         | [sg](Multiplayer-Plugin.md#sg) | N/A              | N/A             |
