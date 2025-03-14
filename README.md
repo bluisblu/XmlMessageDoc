@@ -18,7 +18,7 @@ An incomplete list of packet messages used to communicate with the online server
  6. [Pool](#Pool)
  7. [Galaxy](#Galaxy)
  8. [Fight](#Fight)
- 9. [Chinese Checkers](#Chinese Checkers)
+ 9. [Chinese Checkers](#Chinese-Checkers)
  10. [Trunk](#Trunk)
  11. [Worms](#Worms)
  12. [Dominos](#Dominos)
