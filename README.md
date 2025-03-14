@@ -9,21 +9,22 @@ An incomplete list of packet messages used to communicate with the online server
 
 ## Plugins
 
- 0. [Core](#0 - Core)
- 1. [User](#1 - User)
- 2. [Chat](#2 - Chat)
- 3. [Boxing](#3 - Boxing)
- 4. [Mahjongg](#4 - Mahjongg)
- 5. [Soccer](#5 - Soccer)
- 6. [Pool](#6 - Pool)
- 7. [Galaxy](#7 - Galaxy)
- 8. [Fight](#8 - Fight)
- 9. [Chinese Checkers](#9 - Chinese Checkers)
- 10. [Trunk](#10 - Trunk)
- 11. [Worms](#11 - Worms)
- 12. [Dominos](#12 - Dominos)
+ 0. [Core](#Core)
+ 1. [User](#User)
+ 2. [Chat](#Chat)
+ 3. [Boxing](#Boxing)
+ 4. [Mahjongg](#Mahjongg)
+ 5. [Soccer](#Soccer)
+ 6. [Pool](#Pool)
+ 7. [Galaxy](#Galaxy)
+ 8. [Fight](#Fight)
+ 9. [Chinese Checkers](#Chinese Checkers)
+ 10. [Trunk](#Trunk)
+ 11. [Worms](#Worms)
+ 12. [Dominos](#Dominos)
+ 13. [Multiplayer](#Multiplayer)
 
-## 0 - Core
+## Core
 
 ### Client to Server (C2S)
 
@@ -49,7 +50,7 @@ An incomplete list of packet messages used to communicate with the online server
 | onUserLogin          | [a_lru](Core-Plugin.md#a_lru) | `r` - result ("0" = success)<br>`u` - user id<br>`s` - service id                                                                     | N/A             |
 | setPingTimeout       | [p](Core-Plugin.md#p)         | `t` - time                                                                                                                            | N/A             |
 
-## 1 - User
+##  User
 
 ### Client to Server (C2S)
 
@@ -112,7 +113,7 @@ An incomplete list of packet messages used to communicate with the online server
 | privateMessage            | [u_rpm](User-Plugin.md#u_rpm), [u_spm](User-Plugin.md#u_spm) | `r` - result ("0","1","2" = success)<br>`f` - from user<br>`t` - to user<br>`m` - message                                                                    | N/A             |
 | onProfileUpdate           | [u_sup](User-Plugin.md#u_sup)                                | `r` - result ("0" = success)                                                                                                                                 | N/A             |
 
-## 2 - Chat
+## Chat
 
 ### Client to Server (C2S)
 
@@ -154,7 +155,7 @@ An incomplete list of packet messages used to communicate with the online server
 | N/A                         | [ri](Chat-Plugin.md#ri) | Special event: Remove item<br>`o` - count(?)<br>`s` - screen                                                                                     | N/A             |
 | onReceiveSpecialEvent       | [se](Chat-Plugin.md#se) | Inner xml nodes are parsed as a special event                                                                                                    | N/A             |
 
-## 3 - Boxing
+## Boxing
 
 ### Client to Server (C2S)
 
@@ -174,7 +175,7 @@ An incomplete list of packet messages used to communicate with the online server
 | N/A               | [pr](Boxing-Plugin.md#pr) | `p` - path<br>`k` - delay kick<br>`d` - delay after dodge<br>`z` - daze delay                                                                                                                                                                   |                 |
 | N/A               | [ps](Boxing-Plugin.md#ps) | `s` - player score                                                                                                                                                                                                                              | N/A             |
 
-## 4 - Mahjongg
+## Mahjongg
 
 ### Client to Server (C2S)
 
@@ -195,7 +196,7 @@ An incomplete list of packet messages used to communicate with the online server
 | N/A               | [tr](Mahjongg-Plugin.md#tr) | Removes a pair of tiles<br>`x`,`y`, `z` - position | N/A             |
 | N/A               | [ts](Mahjongg-Plugin.md#ts) | Resets the tiles<br>`s` - seed                     | N/A             |
 
-## 5 - Soccer
+## Soccer
 
 ### Client to Server (C2S)
 
@@ -219,7 +220,7 @@ An incomplete list of packet messages used to communicate with the online server
 | serverPlayAgain                  | [pa](Soccer-Plugin.md#pa) | No attributes                                                                           | N/A             |
 | serverSaidChangeScore (Player)   | [ps](Soccer-Plugin.md#ps) | `s` - score                                                                             | N/A             |
 
-## 6 - Pool
+## Pool
 
 ### Client to Server (C2S)
 
@@ -241,7 +242,7 @@ An incomplete list of packet messages used to communicate with the online server
 | setPlayersScore   | [ps](Pool-Plugin.md#ps) | `s` - score                                                                                                                                                               | N/A             |
 | SetPartnerHit     | [sp](Pool-Plugin.md#sp) | `dx` - DX<br>`dy` - DY<br>`wx` - XPOS<br>`wy` - YPOS<br>`f` - POWER<br>`ex` - ENGLISH_X<br>`ey` - ENGLISH_Y<br>`t` - TIMER<br>`a` - CUEROT<br>`cx` - CUEX<br>`p` - POCKET | N/A             |
 
-## 7 - Galaxy
+## Galaxy
 
 ### Client to Server (C2S)
 
@@ -267,7 +268,7 @@ An incomplete list of packet messages used to communicate with the online server
 | onReceiveSaveProfile           | [sp](Galaxy-Plugin.md#sp)           | N/A                            | N/A             |
 | onReceiveStatisticVersion      | [vsu](Galaxy-Plugin.md#vsu)         | N/A                            | N/A             |
 
-## 8 - Fight
+## Fight
 
 ### Client to Server (C2S)
 
@@ -325,7 +326,7 @@ An incomplete list of packet messages used to communicate with the online server
 | MSGHND_Stop               | [_st](Fight-Plugin.md#_st)   | N/A                | N/A             |
 | MSGHND_Unblock            | [ul](Fight-Plugin.md#ul)     | N/A                | N/A             |
 
-## 9 - Chinese Checkers
+## Chinese Checkers
 
 ### Client to Server (C2S)
 
@@ -340,7 +341,7 @@ An incomplete list of packet messages used to communicate with the online server
 | receiveTurnNotification | [nt](Chinese-Checkers-Plugin.md#nt) | N/A         | N/A             |
 | N/A                     | [pa](Chinese-Checkers-Plugin.md#pa) | Play again  | N/A             |
 
-## 10 - Trunk
+## Trunk
 
 ### Client to Server (C2S)
 
@@ -388,7 +389,7 @@ An incomplete list of packet messages used to communicate with the online server
 | onReceiveUserTransactionsCount | [gutc](Trunk-Plugin.md#gutc) | N/A         | N/A             |
 | onReceiveTransactionError      | [te](Trunk-Plugin.md#te)     | N/A         | N/A             |
 
-## 11 - Worms
+## Worms
 
 ### Client to Server (C2S)
 
@@ -400,7 +401,7 @@ An incomplete list of packet messages used to communicate with the online server
 | Actionscript Name | XML Tag | Description | Client Response |
 | ----------------- | ------- | ----------- | --------------- |
 
-## 12 - Dominos
+## Dominos
 
 ### Client to Server (C2S)
 
